@@ -10,9 +10,10 @@ const Student = () => {
   const dispatch = useAppDispatch();
   const [sname, setsname] = useState("")
   const [semail, setsemail] = useState("")
-  const [gmathematics, setgmathematics] = useState(-1)
-  const [gcomputers, setgcomputers] = useState(-1)
-  const [genglish, setgenglish] = useState(-1)
+  // const [gmathematics, setgmathematics] = useState(-1)
+  // const [gcomputers, setgcomputers] = useState(-1)
+  // const [genglish, setgenglish] = useState(-1)
+  const [sgrade, setsgrade] = useState(-1)
   const [showGrades, setShowGrades] = useState(false)
   const [showAllGradesButton, setshowAllGradesButton] = useState(false);
   const [hideAllGradesButton, sethideAllGradesButton] = useState(true);
@@ -105,10 +106,15 @@ const Student = () => {
         <div key={i}>
           Student name: {stud.sname}<br />
           Student email:{stud.semail}<br />
-           methematics grade(current:{stud.gmathematics})<input onChange={(e) => setgmathematics(+e.target.value)} /><br />
+          add grade:<input onChange={(e) => setsgrade(+e.target.value)}  />
+          grades subject:
+          <button disabled={stud.gmathematics != -1} onClick={() => dispatch(addGradeAsync({ sname: stud.sname, semail: stud.semail, gmathematics:sgrade, gcomputers:stud.gcomputers, genglish:stud.genglish }))}>mathematics</button>
+          <button disabled={stud.gcomputers != -1} onClick={() => dispatch(addGradeAsync({ sname: stud.sname, semail: stud.semail, gmathematics:stud.gmathematics, gcomputers:sgrade, genglish:stud.genglish }))}>computers</button>
+          <button disabled={stud.genglish != -1} onClick={() => dispatch(addGradeAsync({ sname: stud.sname, semail: stud.semail, gmathematics:stud.gmathematics, gcomputers:stud.gcomputers, genglish:sgrade }))}>english</button>
+           {/*another option that i wanted to implement methematics grade(current:{stud.gmathematics})<input onChange={(e) => setgmathematics(+e.target.value)} /><br />
           computers grade(current:{stud.gcomputers})<input onChange={(e) => setgcomputers(+e.target.value)}></input><br />
           english grade(current:{stud.genglish})<input onChange={(e) => setgenglish(+e.target.value)} /><br />
-          <button onClick={() => dispatch(addGradeAsync({ sname: stud.sname, semail: stud.semail, gmathematics, gcomputers, genglish }))}>add grades</button>
+          <button onClick={() => dispatch(addGradeAsync({ sname: stud.sname, semail: stud.semail, gmathematics, gcomputers, genglish }))}>add grades</button> */}
 
       
 

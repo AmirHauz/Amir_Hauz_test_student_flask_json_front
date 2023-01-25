@@ -29,3 +29,4 @@ export async function addGrade(stud: Student) {
   console.log("Api",stud )
   return await axios.put(MY_SERVER + "/" + stud.semail,stud).then(res => res.data)
 }
+

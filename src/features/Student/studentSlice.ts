@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Student from '../../app/models/Student';
 import { RootState } from '../../app/store';
-import { getStudents,addStudent,getStudentsGrade,addGrade,getSpecificStudentGrade } from './studentAPI';
+import { getStudents, addStudent, getStudentsGrade, addGrade, getSpecificStudentGrade } from './studentAPI';
 
 export interface StudentState {
   students:Student[]
@@ -68,6 +68,8 @@ export const addGradeAsync = createAsyncThunk(
   }
 );
 
+
+
 export const StudentSlice = createSlice({
   name: 'Student',
   initialState,
@@ -94,6 +96,7 @@ export const StudentSlice = createSlice({
         state.update =! state.update
     
       })
+      
   },
 
 
